@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
+    background: #f1f1f1;
+}
+
+nav {
+    overflow: hidden;
+    background-color: #013481;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 3em;
+}
+
+/* Links inside the navbar */
+nav a {
+    float: left;
+    font-weight: bold;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+nav a:hover {
+    color: #aeff8d;
+}
+
+nav a:after {
+    content: '';
+    margin-left: 1.5em;
+    top: 25%;
+    height: 50%;
+    border-right: 1px solid #ffffff;
+}
+
+main {
+    margin: auto;
+    margin-top: 5em;
+    padding: 2em;
+    width: 90%;
+    height: 100vh;
+    background-color: #ffffff;
+    overflow: auto;
+}
+
+.t-align-center {
+    text-align: center;
+}

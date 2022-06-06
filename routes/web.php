@@ -14,8 +14,19 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-Route::get('/about', [HomeController::class, 'about']);
+Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 
-Route::get('/contact', [HomeController::class, 'contact']);
+Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
+
+Route::get('/season/{season?}/{team?}/{driver?}', function ($team = null, $driver = null) {
+    if (isset($team)) {
+        if (isset($driver)) {
+            return "You are viewing the driver({$driver}) display";
+        }
+
+        return "You are viewing the team ({$team}) display";
+    }
+    return "You are viewing the season display";
+});

@@ -8,15 +8,18 @@
   <title>@yield('title')</title>
 
   <!-- Fonts -->
+  <link rel="stylesheet" href="{{ asset('assets/fonts/fonts.css') }}">
   <!-- Styles -->
+  <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
 
 <body>
   <header>
     <nav>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
+      <a href="{{ route('home.index') }}"><img src="" alt="Logo"></a>
+      <a href="{{ route('home.index') }}">Home</a>
+      <a href="{{ route('home.about') }}">About</a>
+      <a href="{{ route('home.contact') }}">Contact</a>
     </nav>
   </header>
 
