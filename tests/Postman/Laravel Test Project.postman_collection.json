@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "17335094-9947-48bb-9add-385fc87f6db2",
+		"name": "Laravel Test Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9166488"
+	},
+	"item": [
+		{
+			"name": "Driver",
+			"item": [
+				{
+					"name": "list drivers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/driver",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"driver"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get driver",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/driver/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"driver",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add driver",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "John",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Power",
+									"type": "text"
+								},
+								{
+									"key": "birth_date",
+									"value": "1999-02-01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/driver",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"driver"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete driver",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/api/driver/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"driver",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:{{host_port}}",
+			"type": "string"
+		},
+		{
+			"key": "host_port",
+			"value": "3001",
+			"type": "string"
+		}
+	]
+}
