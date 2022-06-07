@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DriverController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
+
+Route::resource('team', TeamController::class);
+
+Route::resource('driver', DriverController::class);
 
 Route::get('/season/{season?}/{team?}/{driver?}', function ($team = null, $driver = null) {
     if (isset($team)) {

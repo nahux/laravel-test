@@ -4,8 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SeasonController extends Controller
+class TeamController extends Controller
 {
+    public static function getData()
+    {
+        return [
+            ['id' => 1, 'name' => 'Ferrari', 'country' => 'Italy'],
+            ['id' => 2, 'name' => 'Red Bull', 'country' => 'Austria'],
+            ['id' => 3, 'name' => 'Mercedes', 'country' => 'Germany'],
+            ['id' => 4, 'name' => 'McLaren', 'country' => 'United Kingdom'],
+            ['id' => 5, 'name' => 'Alpine', 'country' => 'France']
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,9 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        //
+        return view('team.index', [
+            'teams' => self::getData()
+        ]);
     }
 
     /**
@@ -45,7 +57,16 @@ class SeasonController extends Controller
      */
     public function show($id)
     {
-        //
+        $teams = self::getData();
+        $teamIndex = array_search($id, array_column($teams, 'id'));
+
+        if ($teamIndex === false) {
+            abort(404);
+        }
+
+        return view('team.show', [
+            'team' => $teams[$teamIndex]
+        ]);
     }
 
     /**

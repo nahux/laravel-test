@@ -1,4 +1,4 @@
-@extends('layouts/main')
+@extends('main')
 
 @section('title', 'Contact Us')
 

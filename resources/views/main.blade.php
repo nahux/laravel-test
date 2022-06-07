@@ -18,8 +18,10 @@
 <body>
   <header>
     <nav id="topNav" class="topNav">
-      <a href="{{ route('home.index') }}"><img src="" alt="Logo"></a>
-      <a href="{{ route('home.index') }}" class="{{ Route::currentRouteNamed('home.index') ? 'active' : '' }}">Home</a>
+      <a href="{{ route('home.index') }}" class="{{ Route::currentRouteNamed('home.index') ? 'active' : '' }}"><img src="" alt="Logo"></a>
+      {{-- <a href="{{ route('season.index') }}" class="{{ Route::currentRouteNamed('season.index') ? 'active' : '' }}">Seasons</a> --}}
+      <a href="{{ route('team.index') }}" class="{{ Route::currentRouteNamed('team.index') ? 'active' : '' }}">Teams</a>
+      <a href="{{ route('driver.index') }}" class="{{ Route::currentRouteNamed('driver.index') ? 'active' : '' }}">Drivers</a>
       <a href="{{ route('home.about') }}" class="{{ Route::currentRouteNamed('home.about') ? 'active' : '' }}">About</a>
       <a href="{{ route('home.contact') }}" class="{{ Route::currentRouteNamed('home.contact') ? 'active' : '' }}">Contact</a>
       <button id="toggleNavBtn" class="menu-icon" onclick="toggleNav()">

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DriverFormRequest;
+use App\Models\Driver;
 use Illuminate\Http\Request;
 
-class SeasonController extends Controller
+class DriverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,9 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        //
+        return view('driver.index', [
+            'drivers' => Driver::all()
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class SeasonController extends Controller
      */
     public function create()
     {
-        //
+        return view('driver.form', ['edit' => false]);
     }
 
     /**
@@ -32,9 +36,15 @@ class SeasonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DriverFormRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $driver = Driver::create($data);
+
+        $driver->save();
+
+        return redirect()->route('driver.index');
     }
 
     /**
@@ -43,9 +53,11 @@ class SeasonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Driver $driver)
     {
-        //
+        return view('driver.show', [
+            'driver' => $driver
+        ]);
     }
 
     /**
@@ -54,9 +66,12 @@ class SeasonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Driver $driver)
     {
-        //
+        return view('driver.form', [
+            'edit' => true,
+            'driver' => $driver
+        ]);
     }
 
     /**
@@ -66,9 +81,15 @@ class SeasonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DriverFormRequest $request, Driver $driver)
     {
-        //
+        $data = $request->validated();
+
+        $driver->update($data);
+
+        $driver->save();
+
+        return redirect()->route('driver.show', $driver->id);
     }
 
     /**
