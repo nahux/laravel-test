@@ -9,17 +9,23 @@
 
   <!-- Fonts -->
   <link rel="stylesheet" href="{{ asset('assets/fonts/fonts.css') }}">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
 
 <body>
   <header>
-    <nav>
+    <nav id="topNav" class="topNav">
       <a href="{{ route('home.index') }}"><img src="" alt="Logo"></a>
-      <a href="{{ route('home.index') }}">Home</a>
-      <a href="{{ route('home.about') }}">About</a>
-      <a href="{{ route('home.contact') }}">Contact</a>
+      <a href="{{ route('home.index') }}" class="{{ Route::currentRouteNamed('home.index') ? 'active' : '' }}">Home</a>
+      <a href="{{ route('home.about') }}" class="{{ Route::currentRouteNamed('home.about') ? 'active' : '' }}">About</a>
+      <a href="{{ route('home.contact') }}" class="{{ Route::currentRouteNamed('home.contact') ? 'active' : '' }}">Contact</a>
+      <button id="toggleNavBtn" class="menu-icon" onclick="toggleNav()">
+        <i id="open-icon" class="fa-solid fa-bars" aria-label="Open Navigation Menu"></i>
+        <i id="close-icon" class="fa-solid fa-xmark" aria-label="Close Navigation Menu"></i>
+      </button>
     </nav>
   </header>
 
@@ -29,6 +35,12 @@
 
   <div id="scripts">
     @yield('scripts')
+    <script>
+      function toggleNav() {
+        var topNav = document.getElementById('topNav');
+        topNav.classList.toggle('responsive');
+      }
+    </script>
   </div>
 </body>
 
