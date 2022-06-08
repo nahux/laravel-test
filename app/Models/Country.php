@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Driver extends Model
+class Country extends Model
 {
     use HasFactory;
 
-    protected $table = 'driver';
-    protected $fillable = ['first_name', 'last_name', 'birth_date'];
+    protected $table = 'country';
+    protected $fillable = ['name', 'short_name'];
 }

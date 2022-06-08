@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
-class SeasonController extends Controller
+class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +15,7 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Country::all();
     }
 
     /**
@@ -34,7 +26,13 @@ class SeasonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $country = Country::create($data);
+
+        $country->save();
+
+        return response()->json($country, 201);
     }
 
     /**
@@ -43,20 +41,9 @@ class SeasonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Country $country)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $country;
     }
 
     /**
@@ -66,9 +53,15 @@ class SeasonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Country $country)
     {
-        //
+        $data = $request->all();
+
+        $country->update($data);
+
+        $country->save();
+
+        return response()->json($country, 200);
     }
 
     /**
@@ -77,8 +70,10 @@ class SeasonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Country $country)
     {
-        //
+        $country->delete();
+
+        return response()->json(null, 204);
     }
 }
