@@ -3,6 +3,7 @@
 use App\Http\Controllers\DriverController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TeamController;
 
 /*
@@ -16,23 +17,27 @@ use App\Http\Controllers\TeamController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+// Auth
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/about', [HomeController::class, 'about'])->name('home.about');
+// Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
+// Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 
-Route::resource('team', TeamController::class);
+// Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
-Route::resource('driver', DriverController::class);
+// Route::resource('team', TeamController::class);
 
-Route::get('/season/{season?}/{team?}/{driver?}', function ($team = null, $driver = null) {
-    if (isset($team)) {
-        if (isset($driver)) {
-            return "You are viewing the driver({$driver}) display";
-        }
+// Route::resource('driver', DriverController::class);
 
-        return "You are viewing the team ({$team}) display";
-    }
-    return "You are viewing the season display";
-});
+// Route::get('/season/{season?}/{team?}/{driver?}', function ($team = null, $driver = null) {
+//     if (isset($team)) {
+//         if (isset($driver)) {
+//             return "You are viewing the driver({$driver}) display";
+//         }
+
+//         return "You are viewing the team ({$team}) display";
+//     }
+//     return "You are viewing the season display";
+// });
